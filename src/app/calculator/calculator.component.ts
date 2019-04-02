@@ -45,7 +45,7 @@ export class CalculatorComponent implements OnInit {
     let temp = this.calcModel.numberList;
     this.numberListSplit = this.calcModel.numberList.trim().split(' ');
 
-    if(isNaN(temp.replace(/ +/g, ""))){
+    if(isNaN(temp.replace(/[. ]+/g, ""))) {
       this.invalidMessage += 'Invalid Format - Please enter space separated numbers \n';
       this.invalidAction = true;
     } else{
@@ -53,7 +53,7 @@ export class CalculatorComponent implements OnInit {
             this.calculateAverage();
             this.result = true;
             this.isAverage = true;
-          } else if ('sum' === this.calcModel.operations ){
+          } else if ('sum' === this.calcModel.operations.toLowerCase() ) {
             this.calculateSum();
             this.result = true;
             this.isSum = true;
